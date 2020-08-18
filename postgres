@@ -1,0 +1,13 @@
+
+create table thalberganswers (
+    id serial primary key,
+    created_at timestamptz default now(),
+    health boolean,
+    job boolean,
+    love boolean,
+    self boolean,
+    user_id integer
+);
+
+insert into thalberganswers (health, job, love, self, user_id) 
+values ($1, $2, $3, $4, $5)
