@@ -1,5 +1,5 @@
 
-create table thalberganswers (
+create table answers (
     id serial primary key,
     created_at timestamptz default now(),
     health boolean,
@@ -9,5 +9,17 @@ create table thalberganswers (
     user_id integer
 );
 
-insert into thalberganswers (health, job, love, self, user_id) 
+insert into answers (health, job, love, self, user_id) 
 values ($1, $2, $3, $4, $5)
+
+create table users (
+    id serial primary key,
+    fname text,
+    lname text,
+    username text,
+    password text
+);
+
+
+MUST BE CHANGED TO INCLUDE USER ID
+select created_at from answers order by created_at desc limit 1;

@@ -28,7 +28,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/api/home", async function (req, res) {
+app.get("/api/home", async (req, res) => {
     const answers = await getAnswers();
     console.log(answers)
     res.send(answers)
@@ -40,6 +40,10 @@ app.post("/api/form", async (req, res) => {
     await postForm(health, job, love, self, user);
     res.send();
 })
+
+// app.get("/api/form", async (req, res) => {
+// res.send("Here")
+// })
 
 
 /*api.get('/session', authenticate, function (req, res) {

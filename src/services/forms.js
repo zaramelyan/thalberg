@@ -1,4 +1,3 @@
-import React from 'react';
 
 export async function submitForm({ health, job, love, self, user }) {
     return await fetch('/api/form', {
@@ -11,7 +10,15 @@ export async function submitForm({ health, job, love, self, user }) {
 }).then((res) => console.log(res));
 }
 
-export async function fetchAnswers() {
-return fetch(`/api/home`)
-.then((res) => res.json())
+export function fetchAnswers() {
+    return fetch(`/api/home`)
+    .then((res) => res.json())
 }
+
+
+// export async function checkToday() {
+//     return await fetch('/api/form', {
+//         method: 'GET',
+
+//     })
+// }

@@ -1,8 +1,10 @@
 import React from 'react';
 import {submitForm} from '../services/forms'
+//import { checkToday } from '../../queries';
 
 class AppForm2 extends React.Component {
     //Submit the date to SQL with NOW()::DATE;
+    //fix import + checkToday function
     constructor(props) {
         super(props);
         this.state = {
@@ -18,10 +20,14 @@ class AppForm2 extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    async componentDidMount() {
+    //await checkToday();
+    }
+
     async handleSubmit(e) {
         const { history } = this.props;
         e.preventDefault();
-        console.log("HERE ", {...this.state.form})
+        console.log("Submitted values: ", {...this.state.form})
         
         try {
            //await postForm({...this.state.form});
@@ -38,22 +44,12 @@ class AppForm2 extends React.Component {
   
     handleCheckbox = (e) => {
         const id = e.target.id;
-        if (e.target.checked) {
-            console.log(id + " checked")
+            console.log(id + " checked " + e.target.checked)
             this.setState(prevState => {
-              let form = {...prevState.form};  // creating copy of state variable jasper
-              form[id] = true;                     // update the name property, assign a new value                 
-              return { form };                                 // return new object jasper object
+              let form = {...prevState.form};  // creating copy of state variable 
+              form[id] = !prevState.form[id];                     // update specific, assign a new toggled value                 
+              return { form };                                 // return new object 
             })
-        } else {
-            console.log(id + " unchecked")
-            this.setState(prevState => {
-              let form = {...prevState.form};  // creating copy of state variable jasper
-              form[id] = false;                     // update the name property, assign a new value                 
-              return { form };                                 // return new object jasper object
-            })
-        }
-        console.log(this.state)
     }
 
     render() {
@@ -62,21 +58,21 @@ class AppForm2 extends React.Component {
         <form onSubmit={this.handleSubmit} >
   <label>
     <h2>Helse</h2>
-    <p>Har du holdt deg hydrert, og generelt sunn gjennom dagen + en treningsøkt? 
+    <p>Har du holdt deg hydrert og tatt sunne valg? 
   </p>
     <input type="checkbox" value="health" id="health" onClick={this.handleCheckbox}></input>
   </label>
   
   <label>
-  <h2>Kjærlighet</h2>
+  <h2>Forhold</h2>
   <p>
-  Har du aktivt gjort noe for å gjøre hani lykkelig i løpet av dagen? 
+  Har du aktivt gjort noe for å gjøre partner glad i løpet av dagen? 
  </p>
   <input type="checkbox" value="love" id="love" onClick={this.handleCheckbox}></input></label>
   
 <label>
 <h2>Jobb</h2>
-<p>Har du aktivt forbedret strategi, eller jobbet med strategien i løpet av dagen?
+<p>Har du aktivt forbedret strategi, eller brukt strategien i løpet av dagen?
 </p>
   <input type="checkbox" value="job" id="job" onClick={this.handleCheckbox}></input></label>
 
