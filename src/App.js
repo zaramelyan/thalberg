@@ -9,7 +9,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Signup from './components/Signup';
 import AppForm from './components/Form';
-import AppForm2 from './components/Form2';
+import Form from './components/Form';
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/login" component={Login}/>
         <Route path="/signup" component={Signup}/>
-        <Route path="/form" component={AppForm2}/>
+        <Route path="/form" component={Form}/>
       </Switch>
     </HashRouter>
     </div>

@@ -13,14 +13,15 @@ class Home extends React.Component {
         }
     }
 
-    async componentDidMount() {
-    const answers = await this.fillAnswers();
+    componentDidMount() {
+      this.fillAnswers();
     }
 
     async fillAnswers() {
         try {
           this.setState({ isLoading: true }) 
           const answers = await fetchAnswers()
+          //timestamp of latest answer
           console.log(answers[0].created_at)
           this.setState({ answers, isLoading: false })
         } catch (error) {
@@ -31,11 +32,7 @@ class Home extends React.Component {
 
     render() {
         const date = Date.now();
-        const { 
-              answers,
-              isLoading,
-              error,
-             } = this.state;
+        const { answers, isLoading, error } = this.state;
             if (error) {
               return (
                 <div>Fikk ikke tak i svar: {error.message}</div>
@@ -47,7 +44,8 @@ class Home extends React.Component {
                 <div>Laster svar...</div>
               )
             }
-      
+
+            //kategori og svar kan lagres/lastes annerledes...
             const answerElements = answers.map(({ id, created_at, health, job, love, self, user_id }) => {
              const styles = { border: '1px solid black', padding: 10, margin: 10}
               return (

@@ -37,15 +37,19 @@ align-items: center;
 
 .question.health:hover {
   background-color: rgba(217, 231, 235, 0.397);
-}
-.question.love:hover {
-  background-color: rgba(252, 222, 222, 0.432);
+  transform: translate(5px, -5px);
 }
 .question.job:hover {
   background-color: rgba(221, 232, 247, 0.438);
+  transform: translate(5px, -5px);
+}
+.question.love:hover {
+  background-color: rgba(252, 222, 222, 0.432);
+  transform: translate(-5px, -5px);
 }
 .question.self:hover {
   background-color: rgba(255, 241, 210, 0.425);
+  transform: translate(-5px, -5px);
 }
 
 .answers {
@@ -57,7 +61,7 @@ align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.submit, .clear {
+.submit, .clear{
   margin: 5px 20px;
   width: 85px;
   height: 40px;
@@ -67,14 +71,29 @@ align-items: center;
   font-weight: 300;
 }
 
+.later {
+  margin: 5px 20px;
+  width: 250px;
+  height: 40px;
+  border: none;
+  transition: ease-in, 0.1s;
+  color: grey;
+  font-weight: 300;
+}
+
 .submit:hover {
   color: white;
-  background-color: rgba(217, 231, 235, 0.705);
+  background-color: rgba(83, 125, 136, 0.705);
 }
 
 .clear:hover {
   color: white;
-  background-color: rgba(252, 222, 222, 0.575);
+  background-color: rgba(150, 46, 46, 0.575);
+}
+
+.later:hover {
+  color: white;
+  background-color: rgba(39, 42, 70, 0.575);
 }
 
 .submit:active, .clear:active {
@@ -83,9 +102,20 @@ align-items: center;
 
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 200px;
   width: 100%;
 }
 
+.tagline {
+  display: none;
+  width: 200px;
+}
+
+.buttons {
+  display: inline-flex;
+  width: 250px;
+  flex-wrap: wrap;
+}

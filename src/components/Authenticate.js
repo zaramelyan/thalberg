@@ -4,7 +4,7 @@ function Authenticate() {
 
     return ( 
         <div>
-        Authenticate
+        Authenticating...
         </div>
     )
 }
