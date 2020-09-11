@@ -38,13 +38,13 @@ class Home extends React.Component {
              } = this.state;
             if (error) {
               return (
-                <div>Unable to fetch answers: {error.message}</div>
+                <div>Fikk ikke tak i svar: {error.message}</div>
               )
             }
       
             if (isLoading) {
               return (
-                <div>Loading answers...</div>
+                <div>Laster svar...</div>
               )
             }
       

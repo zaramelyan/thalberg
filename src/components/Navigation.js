@@ -5,7 +5,7 @@ function Navigation() {
 
     return ( 
         <div className="nav">
-        <h1>Mahaniform</h1>
+        <h1>Thalberg-form</h1>
         </div>
     )
 }
