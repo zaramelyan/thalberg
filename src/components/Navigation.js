@@ -4,8 +4,8 @@ function Navigation() {
 
 
     return ( 
-        <div className="nav">
-        <h1>Thalberg-form</h1>
+        <div className="header">
+        <h1>Thalberg</h1>
         </div>
     )
 }

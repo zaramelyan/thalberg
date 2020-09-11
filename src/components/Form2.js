@@ -8,16 +8,18 @@ class AppForm2 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          form: {  health: false,
+          form: {  
+            health: false,
             job: false,
             love: false, 
-            self: false},
-          
+            self: false
+          },
             submitted: false
         }
 
         this.handleCheckbox = this.handleCheckbox.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.clearForm = this.clearForm.bind(this);
     }
 
     async componentDidMount() {
@@ -27,8 +29,9 @@ class AppForm2 extends React.Component {
     async handleSubmit(e) {
         const { history } = this.props;
         e.preventDefault();
+
         console.log("Submitted values: ", {...this.state.form})
-        
+
         try {
            //await postForm({...this.state.form});
         await submitForm({...this.state.form})
@@ -39,51 +42,69 @@ class AppForm2 extends React.Component {
         } catch (err) {
           console.error(err.name + ': ' + err.message)
         }
-       
     }
   
     handleCheckbox = (e) => {
         const id = e.target.id;
             console.log(id + " checked " + e.target.checked)
             this.setState(prevState => {
-              let form = {...prevState.form};  // creating copy of state variable 
-              form[id] = !prevState.form[id];                     // update specific, assign a new toggled value                 
-              return { form };                                 // return new object 
+              let form = {...prevState.form};  // creates copy of state  
+              form[id] = !prevState.form[id];  // update specific form key, toggle value                
+              return { form };                 // return updated form 
             })
     }
 
+    //make this better...
+    clearForm = () => {
+      window.location.reload(true)
+    }
+
     render() {
+      //questions could stored differently
     return (
-        <>
         <form onSubmit={this.handleSubmit} >
-  <label>
-    <h2>Helse</h2>
-    <p>Har du holdt deg hydrert og tatt sunne valg? 
-  </p>
-    <input type="checkbox" value="health" id="health" onClick={this.handleCheckbox}></input>
-  </label>
-  
-  <label>
-  <h2>Forhold</h2>
-  <p>
-  Har du aktivt gjort noe for å gjøre partner glad i løpet av dagen? 
- </p>
-  <input type="checkbox" value="love" id="love" onClick={this.handleCheckbox}></input></label>
-  
-<label>
-<h2>Jobb</h2>
-<p>Har du aktivt forbedret strategi, eller brukt strategien i løpet av dagen?
-</p>
-  <input type="checkbox" value="job" id="job" onClick={this.handleCheckbox}></input></label>
 
-  <label><h2>Selvrealisering</h2>
-  <p>Har du gjort ting du er god på?</p>
-  <input type="checkbox" value="self" id="self" onClick={this.handleCheckbox}></input></label>
+        <div className="form">
+        <div className="question health">
+          <label>
+            <h2>Helse</h2>
+              <p>Har du holdt deg hydrert og tatt sunne valg?</p>
+            <input type="checkbox" value="health" id="health" onClick={this.handleCheckbox} />
+          </label>
+        </div>
 
-<br/>
-  <input type="submit" className="submit" value="SUBMIT" />
-</form>
-    </>
+        <div className="question love">
+          <label>
+            <h2>Forhold</h2>
+              <p>Har du aktivt gjort noe for å gjøre partner glad i løpet av dagen?</p>
+            <input type="checkbox" value="love" id="love" onClick={this.handleCheckbox} />
+          </label>
+        </div>  
+        
+        <div className="question job">
+          <label>
+            <h2>Jobb</h2>
+              <p>Har du aktivt forbedret strategi, eller brukt strategien i løpet av dagen?</p>
+            <input type="checkbox" value="job" id="job" onClick={this.handleCheckbox} />
+          </label>
+        </div>
+
+        <div className="question self">
+          <label>
+            <h2>Selvrealisering</h2>
+              <p>Har du gjort ting du er god på?</p>
+            <input type="checkbox" value="self" id="self" onClick={this.handleCheckbox} />
+          </label>
+        </div>
+        </div>
+        
+          <div className="buttons">
+          <input type="button" className="clear" value="CLEAR" onClick={this.clearForm} />
+          <input type="submit" className="submit" value="SUBMIT" />
+          </div>
+        
+        </form>
+       
     )
     }
 }
