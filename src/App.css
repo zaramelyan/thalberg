@@ -16,9 +16,11 @@ h3 {
   margin: 0;
 }
 
+/*Fix wrap!*/
 .form {
 display: flex;
 flex-direction: row;
+flex-wrap: wrap;
 justify-content: space-evenly;
 width: 100vw;
 height: 400px;
@@ -118,4 +120,9 @@ align-items: center;
   display: inline-flex;
   width: 250px;
   flex-wrap: wrap;
+}
+
+.chart {
+  display: flex;
+  justify-content: center;
 }

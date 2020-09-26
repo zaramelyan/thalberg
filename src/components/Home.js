@@ -1,4 +1,5 @@
 import React from 'react';
+import WeekChart from './WeekChart';
 import { fetchAnswers } from '../services/forms'
 
 class Home extends React.Component {
@@ -13,8 +14,8 @@ class Home extends React.Component {
         }
     }
 
-    componentDidMount() {
-      this.fillAnswers();
+    async componentDidMount() {
+      await this.fillAnswers();
     }
 
     async fillAnswers() {
@@ -47,7 +48,6 @@ class Home extends React.Component {
 
             //kategori og svar kan lagres/lastes annerledes...
             const answerElements = answers.map(({ id, created_at, health, job, love, self, user_id }) => {
-             const styles = { border: '1px solid black', padding: 10, margin: 10}
               return (
                 <div key={id}>
                   <p>{created_at}</p>
@@ -63,7 +63,9 @@ class Home extends React.Component {
       
           return(
               <div>
-
+                <div className="chart">
+                <WeekChart data={answers} />
+                </div>
                 <div>
                   {answerElements}
                   </div>
