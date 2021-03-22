@@ -39,7 +39,7 @@ class Form extends React.Component {
         //await this.populateForm();
         //check if form has been submitted on this date
         
-        history.push('/home')
+        history.push('/')
         } catch (err) {
           console.error(err.name + ': ' + err.message)
         }
