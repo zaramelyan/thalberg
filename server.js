@@ -4,16 +4,16 @@ const express = require('express');
 const bp = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
-const { authenticate } = require('./middleware')
-const { getAnswers, postForm} = require('./queries')
+// const jwt = require('jsonwebtoken');
+// const { authenticate } = require('./middleware')
+const { getAnswers, postForm} = require('./src/services/queries')
 
 
 const app = express();
 
 app.use(helmet());
 
-app.use(express.static('build'));
+app.use(express.static('public'));
 
 //middleware
 app.use(cors());
@@ -40,18 +40,6 @@ app.post("/api/form", async (req, res) => {
     await postForm(health, job, love, self, user);
     res.send();
 })
-
-// app.get("/api/form", async (req, res) => {
-// res.send("Here")
-// })
-
-
-/*api.get('/session', authenticate, function (req, res) {
-    res.send({ 
-      message: 'You are authenticated'
-    });
-   });
-*/
 
 //listening to port 
 let port = process.env.PORT || 8000;

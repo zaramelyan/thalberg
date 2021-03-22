@@ -4,11 +4,9 @@ import './App.css';
 
 //components import
 import Navigation from './components/Navigation';
-import Authenticate from './components/Authenticate';
 import Login from './components/Login';
 import Home from './components/Home';
 import Signup from './components/Signup';
-import AppForm from './components/Form';
 import Form from './components/Form';
 
 function App() {
@@ -18,8 +16,7 @@ function App() {
     <Navigation />
     <HashRouter>
       <Switch>
-        <Route exact path="/" component={Authenticate}/>
-        <Route path="/home" component={Home} />
+        <Route exact path="/" component={Home}/>
         <Route path="/login" component={Login}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/form" component={Form}/>

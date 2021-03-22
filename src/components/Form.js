@@ -57,7 +57,7 @@ class Form extends React.Component {
 
     //make this better...
     clearForm = () => {
-      window.location.reload(true)
+      window.location.reload()
     }
 
     redirect() {
