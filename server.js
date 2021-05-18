@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const express = require('express');
-const bp = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
 // const jwt = require('jsonwebtoken');
@@ -17,8 +16,8 @@ app.use(express.static('public'));
 
 //middleware
 app.use(cors());
-app.use(bp.json());
-app.use(bp.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 //log requests to console
