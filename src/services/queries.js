@@ -7,9 +7,7 @@ const pool = new Pool({
     // password: process.env.DBPASS,
     // port: process.env.DBPORT,
     connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
+    ssl: false
   })
 
 
@@ -35,7 +33,7 @@ const checkToday = () => {
 }
 
 const postForm = (health, job, love, self, user) => {
-    pool.query('INSERT INTO answers (health, job, love, self, user_id) VALUES ($1, $2, $3, $4, $5)', [health, job, love, self, user])
+    pool.query(`INSERT INTO answers (health, job, love, self, user_id) VALUES ($1, $2, $3, $4, $5)`, [health, job, love, self, user])
   };
 
   module.exports = {

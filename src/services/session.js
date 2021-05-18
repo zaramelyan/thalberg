@@ -1,4 +1,4 @@
-const API_URL = '/api';
+const API_URL = 'localhost:9000';
 
 export function createSession({ username, password }) {
     return fetch(`${API_URL}/session`, {

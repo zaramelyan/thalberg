@@ -1,6 +1,6 @@
 
 export async function submitForm({ health, job, love, self, user }) {
-    return await fetch('/api/form', {
+    return await fetch('/form', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -11,7 +11,7 @@ export async function submitForm({ health, job, love, self, user }) {
 }
 
 export function fetchAnswers() {
-    return fetch(`/api/home`)
+    return fetch(`/home`)
     .then((res) => res.json())
 }
 

@@ -28,13 +28,13 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/api/home", async (req, res) => {
+app.get("/home", async (req, res) => {
     const answers = await getAnswers();
     console.log(answers)
     res.send(answers)
 })
 
-app.post("/api/form", async (req, res) => {
+app.post("/form", async (req, res) => {
     const { health, job, love, self, user }  = req.body;
     //remember to add user_id later!
     await postForm(health, job, love, self, user);
@@ -42,7 +42,7 @@ app.post("/api/form", async (req, res) => {
 })
 
 //listening to port 
-let port = process.env.PORT || 8000;
+let port = process.env.PORT || 9000;
 
 app.listen(port)
 console.log(`Running on port ${port}`);
