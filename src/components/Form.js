@@ -61,7 +61,7 @@ class Form extends React.Component {
     }
 
     redirect() {
-      this.props.history.replace("/");
+      this.props.history.replace("/answers");
     }
 
     render() {
